@@ -100,6 +100,10 @@
       font-weight: bold;
     }
 
+    .collapsible.open-list{
+      font-size: 1rem;
+    }
+
     .eye-on-israeli-landing-page .parent-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -161,7 +165,7 @@
       }
 
       .eye-on-israeli-landing-page  .page-two .landing-page-hero-image {
-        min-height: 50px !important;
+        min-height: 100px !important;
         background-size: 100% !important;
       }
 
@@ -491,13 +495,13 @@
       const slug = name.toLowerCase().trim().replace(/\s/g, "-");
       const element = `
             <div class="grid-item mb-5">
-                <a href="#${slug}" class="landing-page-list-inner person-link text-center text-lg-left">
-                    <div class="position-md-relative overflow-hidden mb-3" style="height: 110px">
-                        <img src="http:${image?.fields?.file?.url}" width="200" class="position-md-absolute top-0 left-0"/>
+                <a href="#${slug}" class="landing-page-list-inner person-link text-center text-lg-left d-flex flex-column align-items-center">
+                    <div class=" mb-3" style="height: 200px">
+                        <div class="" style="width:200px; height: 200px; background: url(http:${image?.fields?.file?.url}) no-repeat center center;background-size: auto;background-size: contain;"></div>
                     </div>
                     <p class="landing-page-list-inner-text">${name}</p>
-                    <p class="landing-page-list-inner-text">${company}, ${title}</p>
-                    <p class="landing-page-list-inner-text">${sector}</p>
+                    <p class="landing-page-list-inner-text">${company ? company+', ' : ''}${title}</p>
+                    <p class="landing-page-list-inner-text">${sector ? sector : ''}</p>
                 </a>
             </div>
           `;
