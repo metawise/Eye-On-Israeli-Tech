@@ -1,0 +1,559 @@
+<script
+			  src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+			  integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
+			  crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
+  <script>
+    var exports = {}; // quick fix because 'exports' is not defined in rich-text bundle below
+    var currentURL = window.location.href;
+  </script>
+  <script src="https://unpkg.com/@contentful/rich-text-html-renderer@12.0.0/dist/rich-text-html-renderer.es5.js"
+    charset="utf-8"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
+  <style>    
+
+  .eye-on-israeli-landing-page *{
+    color: #000000 !important;
+  }
+    .eye-on-israeli-landing-page  .landing-page-hero-copy {
+      font-family: initial;
+    }
+
+    .eye-on-israeli-landing-page  .landing-page-hero-copy-dek {
+      font-family: "Open Sans", sans-serif;
+    }
+
+    .eye-on-israeli-landing-page  .landing-page-hero-copy-dek b {
+      font-family: initial;
+      font-size: 30px;
+      line-height: 120%;
+      font-weight: 700;
+    }
+
+    .eye-on-israeli-landing-page  .landing-page .landing-page-hero-copy-dek {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 300;
+      font-style: normal;
+      font-size: 18px;
+      line-height: 28px;
+      text-align: left;
+      color: #333;
+    }
+
+    .eye-on-israeli-landing-page  p.p1 {
+      font-weight: 400 !important;
+      line-height: 130% !important;
+    }
+
+    .eye-on-israeli-landing-page .landing-page-hero-copy-dek p:nth-of-type(2)::first-letter {
+      float: left;
+      font-size: 48px;
+      font-weight: bold;
+      line-height: 0.65;
+      margin: 0.1em 0.1em 0.1em 0;
+    }
+
+    .eye-on-israeli-landing-page .landing-page-list-inner-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: #3c4142;
+    }
+
+    .eye-on-israeli-landing-page .heading {
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .eye-on-israeli-landing-page .landing-page .landing-page-list.grid .grid-item .landing-page-list-inner-text {
+      font-size: 12px;
+      margin-bottom: unset;
+    }
+
+    .eye-on-israeli-landing-page .landing-page .landing-page-list.grid .grid-item .landing-page-list-inner-text:first-of-type {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .eye-on-israeli-landing-page  .collapsible,
+    .eye-on-israeli-landing-page  .landing-page-modal-close {
+      border: 0;
+      outline: 0;
+      margin: 20px 0;
+      padding: 15px 20px;
+      background-color: #019ef7;
+      color: #ffff !important;
+      font-weight: bold;
+    }
+
+    .eye-on-israeli-landing-page .parent-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-column-gap: 20px;
+      grid-row-gap: 20px;
+    }
+
+    .eye-on-israeli-landing-page .landing-page-hero-copy h1 p::after {
+      content: "";
+      display: block;
+      margin: 30px 0;
+      height: 1px;
+      background: #000;
+    }
+
+    .eye-on-israeli-landing-page .landing-page .landing-page-hero-copy h1 {
+      font-size: 40px;
+      text-align: left;
+      margin-bottom: 20px;
+      font-weight: 400;
+
+      line-height: 1;
+    }
+
+    @media screen and (max-width: 1200px) {
+      .eye-on-israeli-landing-page .parent-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media screen and (max-width: 900px) {
+      .eye-on-israeli-landing-page .parent-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      
+
+      .eye-on-israeli-landing-page  .bio-image img {
+        display: block;
+        margin: 0 auto 0 !important;
+        max-width: 100% !important;
+      }
+
+      .eye-on-israeli-landing-page  .landing-page-modal-left-inner {
+        margin-top: 25px;
+        width: 100%;
+        max-width: 440px;
+        padding-right: 30px;
+        padding-left: 30px;
+      }
+
+      .eye-on-israeli-landing-page .page-one .landing-page-hero-image {
+        min-height: 150px !important;
+        background-size: 90% !important;
+      }
+
+      .eye-on-israeli-landing-page  .page-two .landing-page-hero-image {
+        min-height: 50px !important;
+        background-size: 100% !important;
+      }
+
+      .eye-on-israeli-landing-page  .bio-text {
+        margin: 30px;
+      }
+
+      .eye-on-israeli-landing-page  .social-share {
+        margin-left: 25px;
+      }
+    }
+
+    @media screen and (max-width: 500px) {
+      .eye-on-israeli-landing-page .parent-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .eye-on-israeli-landing-page  img.position-md-absolute.top-0.left-0 {
+        width: 100%;
+      }
+    }
+  </style>
+
+<div class="eye-on-israeli-landing-page">
+<div class="landing-page grid" style="margin-bottom: 300px">
+  <div class="page-one d-none">
+    <header class="landing-page-hero" class="container-fluid">
+      <div class="landing-page-hero-image" style="
+            background: url('https://images.ctfassets.net/cssajj5dlpwn/5bTcacQMLg7HCG8JUMIjKk/0f79e4940b877176f0e7a0c7bbf7d1b5/Trust_Israel_100_Eye_On_Header.webp')
+              no-repeat center center;
+            min-height: 450px;
+          "></div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="landing-page-hero-copy container mt-5">
+            <h1 class="text-center">
+              <p>EYE ON <strong>ISRAELI TECH</strong></p>
+            </h1>
+            <div class="landing-page-hero-copy-dek">
+              <p class="p1">
+                <b>Israel: From “Start-up Nation” to “Scale-Up Nation”<span class="Apple-converted-space">
+                  </span></b>
+              </p>
+              <p class="p1">
+                Have you used instant messaging lately? What about VOIP
+                technology? Been protected by a firewall, or plugged in a
+                flash drive? Then you’ve used an Israeli invention. And there
+                are many, many more to come, because the Israeli tech sector
+                is roaring. Israeli tech firms raised more than $26 billion
+                last year, up 147 percent from the previous year—considerably
+                faster than the U.S. tech growth rate.<span class="Apple-converted-space">
+                </span>
+              </p>
+              <p class="p1">
+                Israel has long boasted more start-ups per capita than any
+                other country, but only a few years ago Israel-watchers
+                fretted about whether companies in the tiny Middle Eastern
+                nation could get beyond seed rounds. Today the “Start-up
+                Nation” would be better known as Scale-Up Nation, or perhaps
+                Unicorn Country. In 2021 the number of Israeli
+                unicorns—private companies valued at over $1 billion—more than
+                doubled to 53, according to Start-up Nation Central, a
+                nonprofit focused on Israeli innovation. The number of
+                financing mega-rounds have more than tripled, creating a
+                handful of “decacorns” valued at $10 billion or more.<span class="Apple-converted-space">
+                </span>
+              </p>
+              <p class="p1">
+                Not much bigger than the state of New Jersey and with just 9
+                million people, Israel now has more unicorns than all of
+                Europe. Last year investment more than doubled in its
+                strongest areas including enterprise and data infrastructure,
+                cybersecurity and fintech. But Israel is also making a real
+                impact in sustainability, thanks in part to the challenges it
+                has faced etching a first-world nation out of the desert. The
+                country that invented drip irrigation is at the forefront of
+                areas including biological pest control and water
+                conservation.<span class="Apple-converted-space"> </span>
+              </p>
+              <p class="p1">
+                How does Israel manage to consistently rank near the top in
+                global business innovation and entrepreneurship rankings?
+                Perhaps it is the fact that most citizens serve in its
+                high-tech, high-stakes, highly collaborative military. Perhaps
+                it’s the cutting-edge educational system, which has produced
+                the world’s highest concentration of engineers and PhDs.
+                Perhaps it’s systematic government support for
+                innovation—including risk-free grants to entrepreneurs—or the
+                thriving tech ecosystem. Or perhaps it’s something more
+                intangible: If you know Israelis, you’re probably aware of
+                their boldness and confidence embodied by the Yiddish word
+                <i>chutzpah</i>.
+              </p>
+              <p class="p1">
+                Whatever the reason, Israel is unique first and foremost
+                because of its <i>people</i>. As our list of “100 Israeli Tech
+                Leaders You Need to Know” demonstrates, Israeli entrepreneurs
+                have long been moving seamlessly from large corporations to
+                start-ups. Now they’re turning those start-ups into major
+                players themselves, disrupting fields in almost every
+                industry. Israel is still a small country, but it’s making an
+                increasingly big impact on a global stage.
+              </p>
+              <p>
+                <button class="collapsible open-list" type="button">
+                  Discover the 100 Israeli Tech Leaders You Need To Know
+                </button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content container-fluid list-container">
+      <div class="row d-flex justify-content-center">
+        <div class="container">
+          <div class="landing-page-list grid d-none">
+            <div class="landing-page-search">
+              <form action="" class="landing-page-searchbox">
+                <label for="search-terms">Search</label>
+                <input placeholder="by name, location, or industry" type="text" name="search-terms" id="search-field"
+                  class="form-control mb-4" style="width: 300px" />
+              </form>
+            </div>
+            <div class="grid-row parent-grid"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="page-two d-none">
+    <header class="landing-page-hero" class="container-fluid">
+      <div class="landing-page-hero-image" style="
+            background: url('https://images.ctfassets.net/cssajj5dlpwn/Cop95lRcn2IwzfIMhKDtF/04dd75cad1418a98279edf36f3d10989/Trust_Israel_100_Header_Bio_Page.webp')
+              no-repeat top center;
+            min-height: 200px;
+            background-size: contain;
+          "></div>
+
+      <div class="container bio-info mt-3" style="max-width: 950px">
+        <button class="landing-page-modal-close">← Back to List</button>
+        <div class="row">
+          <div class="col-sm-12 col-md-4 landing-page-modal-left no-padding">
+            <div class="landing-page-modal-left-inner">
+              <div class="bio-image mt-4"></div>
+              <div class="heading mt-4">Name</div>
+              <div class="bio-name"></div>
+              <div class="heading mt-2">Location</div>
+              <div class="bio-location"></div>
+              <div class="heading mt-2">Sector</div>
+              <div class="bio-sector"></div>
+              <div class="heading mt-4">Website</div>
+              <div class="bio-website"></div>
+            </div>
+            <div class="social-share mt-4 d-flex">
+              <a href="#" target="_blank" rel="noopener noreferrer" class="px-2 fa fa-linkedin"></a>
+              <a href="#" class="px-2 fa fa-twitter"></a>
+              <a href="#" class="px-2 fa fa-facebook"></a>
+              <a href="#" class="px-2 fa fa-envelope"></a>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-8 bio-text"></div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <script async>
+    // window.onload = function () {
+    //   var height = $('html').height();
+    //   window.parent.postMessage({'iframe': height}, '*');
+    // }
+    
+    var client = contentful.createClient({
+      space: "cssajj5dlpwn",
+      accessToken:
+        "1103649012558aa34fcba826ece63b571844cdce5979fdfb5a12a4840f7cc39c",
+    });
+    var data = [];
+
+    const pageOne = document.querySelector(".page-one");
+    const pageTwo = document.querySelector(".page-two");
+    pageSwitch();
+
+    const gridRow = document.querySelector(".grid-row");
+    const list = document.querySelectorAll("a.landing-page-list-inner-link");
+    const searchField = document.querySelector("#search-field");
+    const openList = document.querySelector(".open-list");
+    const pplList = document.querySelectorAll(".landing-page-list");
+    const personLink = document.querySelectorAll(".person-link");
+    const backButton = document.querySelector(".landing-page-modal-close");
+    const socialButtons = document.querySelector(".social-share");
+
+    socialButtons.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+      });
+      let url = params.url;      
+      if(url?.includes("#")){
+        url = url.split("#")[0];
+      }
+      let currentURL = url + window.location.hash
+
+      if (e.target.classList) {
+        const classList = e.target.classList;
+        let url = null;
+        if (classList.contains("fa-envelope")) {
+          url = `mailto:REPLACEME@EMAIL.COM?body=${currentURL}`;
+        } else if (classList.contains("fa-facebook")) {
+          url = `https://www.facebook.com/sharer/sharer.php?u=${currentURL}`;
+        } else if (classList.contains("fa-twitter")) {
+          url = `https://twitter.com/intent/tweet?text="${currentURL}"`;
+        } else if (classList.contains("fa-linkedin")) {
+          url = `https://www.linkedin.com/sharing/share-offsite/?url=${currentURL}`;
+        }
+
+        if (url) {
+          window.open(url, "_blank") || window.location.replace(url);
+        }
+      }
+
+      // const children = e.target.getChildren();
+    });
+    backButton.addEventListener("click", () => {
+      document.querySelector(".bio-image").innerHTML = "";
+      document.querySelector(".bio-name").innerHTML = "";
+      document.querySelector(".bio-website").innerHTML = "";
+      document.querySelector(".bio-location").innerHTML = "";
+      document.querySelector(".bio-sector").innerHTML = "";
+      document.querySelector(".bio-text").innerHTML = "";
+
+      pageTwo.classList.add("d-none");
+      pageOne.classList.remove("d-none");
+      location.hash = "";
+    });
+
+    addEventListener("hashchange", (event) => {
+      pageSwitch();
+      window.scrollTo(0, 0);
+    });
+    renderList();
+
+    async function getBio(hash) {
+      const image = document.querySelector(".bio-image");
+      const bio_name = document.querySelector(".bio-name");
+      const bio_website = document.querySelector(".bio-website");
+      const bio_location = document.querySelector(".bio-location");
+      const bio_sector = document.querySelector(".bio-sector");
+      const bio_text = document.querySelector(".bio-text");
+
+      const name = hash
+        .replace("#", "")
+        .replace(/-/g, " ")
+        .replace(/_/g, " ")
+        .replace(/\w\S*/g, (txt) => {
+          return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        });
+
+      const bioData = {
+        name: "",
+        title: "",
+        company: "",
+        sector: "",
+        bio: "",
+        image: "",
+        website: "",
+        location: "",
+      };
+
+      const fields = await client.getEntries().then(function (entries) {
+        const { items } = entries;
+        let filtered = filterIt(items, name);
+        if (filtered.length > 0) {
+          const { fields } = filtered[0];
+          return fields;
+        }
+      });
+
+      bioData.name = fields?.name;
+      bioData.title = fields?.title;
+      bioData.company = fields?.company;
+      bioData.sector = fields?.sector;
+      bioData.bio = fields?.bio;
+      bioData.website = fields?.website;
+      bioData.location = fields?.location;
+      bioData.image = fields?.image.fields.file.url;
+
+      image.innerHTML = `<img src="http:${bioData.image}" alt="${bioData.name}" style="max-width: 240px"/>`;
+      bio_name.innerHTML = bioData.name;
+      bio_website.innerHTML = bioData.website
+        ? `<a href="${bioData.website}" target="_blank" rel="nofollow noopener noreferrer">${bioData.website}</a>`
+        : "";
+      bio_location.innerHTML = bioData.location || "";
+      bio_sector.innerHTML = bioData.sector || "";
+      bio_text.innerHTML = documentToHtmlString(bioData.bio) || "";
+    }
+    function pageSwitch() {
+      if (location.hash) {
+        getBio(location.hash);
+        pageOne.classList.add("d-none");
+        pageTwo.classList.remove("d-none");
+      } else {
+        pageTwo.classList.add("d-none");
+        pageOne.classList.remove("d-none");
+      }
+    }
+    openList.addEventListener("click", function (e) {
+      if (pplList[0].classList.contains("d-none")) {
+        pplList[0].classList.remove("d-none");
+        e.target.innerHTML = "Collapse";
+      } else {
+        pplList[0].classList.add("d-none");
+        e.target.innerHTML =
+          "Discover the 100 Israeli Tech Leaders You Need To Know";
+      }
+    });
+    searchField.addEventListener(
+      "keyup",
+      delay((e) => {
+        const searchString = e.target.value.toLowerCase();
+        gridRow.innerHTML = "";
+        renderList(searchString);
+      }, 500)
+    );
+    function renderList(search = "") {
+      let people = [];
+      client.getEntries().then(function (entries) {
+        let { items } = entries;
+        data = items;
+        if (search) {
+          items = filterIt(items, search);
+        }
+        items.forEach(function (entry) {
+          let person = itemBuild(entry?.fields);
+          if (person) people.push(person);
+        });
+        people.forEach(function (person) {
+          gridRow.appendChild(htmlToElement(person));
+        });
+      });
+    }
+    function delay(callback, ms) {
+      var timer = 0;
+      return function () {
+        var context = this,
+          args = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          callback.apply(context, args);
+        }, ms || 0);
+      };
+    }
+    function filterIt(arr, searchKey) {
+      return arr.filter(function (item) {
+        const { fields } = item;
+        const { name, title, company, sector } = fields;
+
+        if (
+          name?.toLowerCase().includes(searchKey.toLowerCase()) ||
+          title?.toLowerCase().includes(searchKey.toLowerCase()) ||
+          company?.toLowerCase().includes(searchKey.toLowerCase()) ||
+          sector?.toLowerCase().includes(searchKey.toLowerCase())
+        ) {
+          return item;
+        }
+      });
+    }
+    const filterList = (list, searchValue) => {
+      let filtered = list.filter((item) => {
+        const arr = searchValue.split(" ");
+        return arr.some(
+          (el) =>
+            item.firstName.toLowerCase().includes(el) ||
+            item.lastName.toLowerCase().includes(el)
+        );
+      });
+      return filtered;
+    };
+    function htmlToElement(html) {
+      var template = document.createElement("template");
+      html = html.trim(); // Never return a text node of whitespace as the result
+      template.innerHTML = html;
+      return template.content.firstChild;
+    }
+    function itemBuild(item) {
+      if (!item?.image?.fields?.file?.url) return null;
+      const { name, title, company, sector, image } = item;
+      const slug = name.toLowerCase().trim().replace(/\s/g, "-");
+      const element = `
+            <div class="grid-item mb-5">
+                <a href="#${slug}" class="landing-page-list-inner person-link text-center text-lg-left">
+                    <div class="position-md-relative overflow-hidden mb-3" style="height: 110px">
+                        <img src="http:${image?.fields?.file?.url}" width="200" class="position-md-absolute top-0 left-0"/>
+                    </div>
+                    <p class="landing-page-list-inner-text">${name}</p>
+                    <p class="landing-page-list-inner-text">${company}, ${title}</p>
+                    <p class="landing-page-list-inner-text">${sector}</p>
+                </a>
+            </div>
+          `;
+      return element;
+    }
+  </script>
+</div>
