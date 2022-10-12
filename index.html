@@ -1,3 +1,7 @@
+<script
+			  src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+			  integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
+			  crossorigin="anonymous"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
   <script>
@@ -314,8 +318,11 @@
     </header>
   </div>
 
-  <script>
-    
+  <script async>
+    // window.onload = function () {
+    //   var height = $('html').height();
+    //   window.parent.postMessage({'iframe': height}, '*');
+    // }
     
     var client = contentful.createClient({
       space: "cssajj5dlpwn",
@@ -339,6 +346,15 @@
 
     socialButtons.addEventListener("click", (e) => {
       e.preventDefault();
+
+      const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+      });
+      let url = params.url;      
+      if(url?.includes("#")){
+        url = url.split("#")[0];
+      }
+      let currentURL = url + window.location.hash
 
       if (e.target.classList) {
         const classList = e.target.classList;
@@ -415,14 +431,14 @@
         }
       });
 
-      bioData.name = fields.name;
-      bioData.title = fields.title;
-      bioData.company = fields.company;
-      bioData.sector = fields.sector;
-      bioData.bio = fields.bio;
-      bioData.website = fields.website;
-      bioData.location = fields.location;
-      bioData.image = fields.image.fields.file.url;
+      bioData.name = fields?.name;
+      bioData.title = fields?.title;
+      bioData.company = fields?.company;
+      bioData.sector = fields?.sector;
+      bioData.bio = fields?.bio;
+      bioData.website = fields?.website;
+      bioData.location = fields?.location;
+      bioData.image = fields?.image.fields.file.url;
 
       image.innerHTML = `<img src="http:${bioData.image}" alt="${bioData.name}" style="max-width: 240px"/>`;
       bio_name.innerHTML = bioData.name;
@@ -434,7 +450,6 @@
       bio_text.innerHTML = documentToHtmlString(bioData.bio) || "";
     }
     function pageSwitch() {
-      
       if (location.hash) {
         getBio(location.hash);
         pageOne.classList.add("d-none");
