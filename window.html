@@ -500,7 +500,7 @@
                         <div class="" style="width:200px; height: 200px; background: url(http:${image?.fields?.file?.url}) no-repeat center center;background-size: auto;background-size: contain;"></div>
                     </div>
                     <p class="landing-page-list-inner-text">${name}</p>
-                    <p class="landing-page-list-inner-text">${company ? company+', ' : ''}${title}</p>
+                    <p class="landing-page-list-inner-text">${company ? company+', ' : ''}${title ? title : ''}</p>
                     <p class="landing-page-list-inner-text">${sector ? sector : ''}</p>
                 </a>
             </div>
