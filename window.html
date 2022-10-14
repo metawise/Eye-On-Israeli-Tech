@@ -70,6 +70,7 @@
       font-size: 15px;
       font-weight: 600;
       color: #3c4142;
+      text-align: center;
     }
 
     .eye-on-israeli-landing-page .heading {
@@ -194,12 +195,6 @@
 <div class="landing-page grid" style="margin-bottom: 300px">
   <div class="page-one d-none">
     <header class="landing-page-hero" class="container-fluid">
-      <div class="landing-page-hero-image" style="
-            background: url('https://images.ctfassets.net/cssajj5dlpwn/5bTcacQMLg7HCG8JUMIjKk/0f79e4940b877176f0e7a0c7bbf7d1b5/Trust_Israel_100_Eye_On_Header.webp')
-              no-repeat center center;
-            min-height: 450px;
-          "></div>
-
       <div class="container-fluid">
         <div class="row">
           <div class="landing-page-hero-copy container mt-5">
@@ -235,13 +230,6 @@
 
   <div class="page-two d-none">
     <header class="landing-page-hero" class="container-fluid">
-      <div class="landing-page-hero-image" style="
-            background: url('https://images.ctfassets.net/cssajj5dlpwn/Cop95lRcn2IwzfIMhKDtF/04dd75cad1418a98279edf36f3d10989/Trust_Israel_100_Header_Bio_Page.webp')
-              no-repeat top center;
-            min-height: 200px;
-            background-size: contain;
-          "></div>
-
       <div class="container bio-info mt-3" style="max-width: 950px">
         <button class="landing-page-modal-close">← Back to List</button>
         <div class="row">
@@ -460,13 +448,15 @@
     function filterIt(arr, searchKey) {
       return arr.filter(function (item) {
         const { fields } = item;
-        const { name, title, company, sector } = fields;
+        
+        const { name, title, company, sector, location } = fields;
 
         if (
           name?.toLowerCase().includes(searchKey.toLowerCase()) ||
           title?.toLowerCase().includes(searchKey.toLowerCase()) ||
           company?.toLowerCase().includes(searchKey.toLowerCase()) ||
-          sector?.toLowerCase().includes(searchKey.toLowerCase())
+          sector?.toLowerCase().includes(searchKey.toLowerCase()) ||
+          location?.toLowerCase().includes(searchKey.toLowerCase())
         ) {
           return item;
         }
